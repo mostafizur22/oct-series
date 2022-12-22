@@ -9,8 +9,10 @@ use Doctrine\Persistence\ObjectManager;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
+    const PROGRAMS = 'Programs';
     public function load(ObjectManager $manager)
     {
+        for ($i = 0; $i < $this->
         $program = new Program();
         $program->setTitle('Walking dead');
         $program->setSynopsis('Des zombies envahissent la terre');

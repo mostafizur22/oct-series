@@ -9,7 +9,7 @@ use Doctrine\Persistence\ObjectManager;
 class CategoryFixtures extends Fixture
 {
     const CATEGORIES = ['Action', 'Aventure', 'Animation', 'Fantastique', 'Horreur' ];
-   
+    
     public function load(ObjectManager $manager)
     {
         foreach (self::CATEGORIES as $key => $categoryName){
