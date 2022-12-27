@@ -4,8 +4,10 @@
     <h1>Toutes les séries de la table program : </h1>
     {% for program in programs %}
         <div>
-            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+            <h2>{{ loop.index }}.{{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+            <img src={{ program.poster }} alt="pic" width="350" height="200">
             <p>{{ program.synopsis }}</p>
+            
         </div>
     {% else %}
         <div>
