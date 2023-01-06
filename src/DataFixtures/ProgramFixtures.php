@@ -3,9 +3,9 @@
 namespace App\DataFixtures;
 
 use App\Entity\Program;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Persistence\ObjectManager;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -16,6 +16,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
         ['Chernobyl', 'In April 1986, an explosion at the Chernobyl nuclear power plant', 'https://cdn.pixabay.com/photo/2021/01/01/21/31/halloween-5880068_1280.jpg', 'Horreur' ],
         ['Rick and Morty', 'The exploits of a super scientist and his not-so-bright grandson.', 'https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-wazzaldorp-deviantart-34.png', 'Animation' ] 
     ];
+
     
     public function load(ObjectManager $manager)
     {
@@ -26,6 +27,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setPoster($poster);
             $program->setCategory($this->getReference("category_$category"));
             $manager->persist($program);
+            $this->addReference('program_'.$title, $program);
         }
         $manager->flush();
     }
